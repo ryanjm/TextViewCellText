@@ -45,16 +45,18 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    self.myComment = @"This is a test";
+  self.myComment = @"This is a test";
+  //[self.tableView registerClass:[TextViewTVCell class] forCellReuseIdentifier:NSStringFromClass([TextViewTVCell class])];
   [super viewDidLoad];
 }
 
-- (TextViewTVCell *)prototypeItemCell
+- (TextViewTVCell *)prototypeCell
 {
-    if (!_prototypeCell) {
-        _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TextViewTVCell class])];
-    }
-    return _prototypeCell;
+  if (!_prototypeCell) {
+    _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TextViewTVCell class])];
+    NSAssert(_prototypeCell, @"F");
+  }
+  return _prototypeCell;
 }
 
 
@@ -65,11 +67,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//  if (section == 0) {
-    return 1;
-//  } else {
-//    return self.comments.count;
-//  }
+  //  if (section == 0) {
+  return 1;
+  //  } else {
+  //    return self.comments.count;
+  //  }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,37 +79,39 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//  return UITableViewAutomaticDimension;
-    
-    self.prototypeCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 999999);
-    
-    // same as setting it up
-    self.prototypeCell.textView.text = self.myComment;
-    
-    [self.prototypeCell layoutIfNeeded];
-    
-    CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-
-    NSLog(@"size for cell: %@", NSStringFromCGSize(size));
-    return size.height+1;
+  //  return UITableViewAutomaticDimension;
+  
+  self.prototypeCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 999999);
+  
+  // same as setting it up
+  self.prototypeCell.textView.text = self.myComment;
+  
+  [self.prototypeCell.contentView setNeedsLayout];
+  [self.prototypeCell.contentView layoutIfNeeded];
+  
+  CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+  
+  NSLog(@"size for cell: %@", NSStringFromCGSize(size));
+  
+  return size.height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//  if (indexPath.section == 0) {
-    TextViewTVCell *tvc = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TextViewTVCell class])];
-    tvc.textView.text = self.myComment;
-    
-    return tvc;
-//  }
-//  else {
-//    CommentTVCell *tvc = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CommentTVCell class])];
-//    
-//    Comment *comment = self.comments[indexPath.row];
-//    tvc.authorLabel.text = comment.author;
-//    tvc.bodyLabel.text = comment.body;
-//    
-//    return tvc;
-//  }
+  //  if (indexPath.section == 0) {
+  TextViewTVCell *tvc = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TextViewTVCell class])];
+  tvc.textView.text = self.myComment;
+  
+  return tvc;
+  //  }
+  //  else {
+  //    CommentTVCell *tvc = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CommentTVCell class])];
+  //
+  //    Comment *comment = self.comments[indexPath.row];
+  //    tvc.authorLabel.text = comment.author;
+  //    tvc.bodyLabel.text = comment.body;
+  //
+  //    return tvc;
+  //  }
 }
 
 - (NSArray *)comments {
@@ -130,7 +134,7 @@
 }
 
 - (void)respondToTextViewHeightDidChange:(TextViewTVCell *)tvc {
-    self.myComment = tvc.textView.text;
+  self.myComment = tvc.textView.text;
   [self.tableView beginUpdates];
   [self.tableView endUpdates];
 }
