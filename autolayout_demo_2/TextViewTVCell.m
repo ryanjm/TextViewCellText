@@ -12,9 +12,17 @@
   CGFloat _textViewHeight;
 }
 
+- (void)updateConstraints
+{
+    self.textViewWidthConstraint.constant = self.contentView.frame.size.width - 30;
+    
+    [super updateConstraints];
+}
+
 - (void)textViewDidChange:(UITextView *)textView {
   CGFloat intrinsicHeight = [textView intrinsicContentSize].height;
   if (_textViewHeight != 0.f && _textViewHeight != intrinsicHeight) {
+      NSLog(@"\ncell bounds: %@\nintrinsice size: %@", NSStringFromCGRect(self.frame), NSStringFromCGSize([textView intrinsicContentSize]));
     [[UIApplication sharedApplication] sendAction:@selector(respondToTextViewHeightDidChange:) to:nil from:self forEvent:nil];
   }
   _textViewHeight = intrinsicHeight;

@@ -49,7 +49,7 @@
   [super viewDidLoad];
 }
 
-- (TextViewTVCell *)prototypeItemCell
+- (TextViewTVCell *)prototypeCell
 {
     if (!_prototypeCell) {
         _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TextViewTVCell class])];
@@ -78,24 +78,26 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //  return UITableViewAutomaticDimension;
-    
-    self.prototypeCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 999999);
-    
-    // same as setting it up
+
+//    self.prototypeCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), CGRectGetHeight(self.prototypeCell.bounds));
+
     self.prototypeCell.textView.text = self.myComment;
     
-    [self.prototypeCell layoutIfNeeded];
+    [self.prototypeCell.contentView setNeedsLayout];
+    [self.prototypeCell.contentView layoutIfNeeded];
     
     CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
 
     NSLog(@"size for cell: %@", NSStringFromCGSize(size));
-    return size.height+1;
+    return size.height + 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //  if (indexPath.section == 0) {
     TextViewTVCell *tvc = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TextViewTVCell class])];
+    
     tvc.textView.text = self.myComment;
+//    [tvc setNeedsLayout];
     
     return tvc;
 //  }

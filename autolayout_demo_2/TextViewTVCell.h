@@ -11,5 +11,6 @@
 @interface TextViewTVCell : UITableViewCell <UITextViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewWidthConstraint;
 
 @end
