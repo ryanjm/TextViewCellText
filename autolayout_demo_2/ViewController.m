@@ -45,7 +45,7 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    self.myComment = @"This is a test";
+    self.myComment = @"This is a test. Hello world. Test and this is a good alknd a ldkj alkj adsfkj asdflkj test.";
   [super viewDidLoad];
 }
 
@@ -88,7 +88,7 @@
     
     CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
 
-    NSLog(@"size for cell: %@", NSStringFromCGSize(size));
+    NSLog(@"calculated size for cell: %@", NSStringFromCGSize(size));
     return size.height + 7;
 }
 

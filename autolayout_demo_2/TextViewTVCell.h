@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewWidthConstraint;
 
 @end
