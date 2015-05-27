@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CAD03A91B1527D200574005 /* BasicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD03A81B1527D200574005 /* BasicView.m */; };
 		8D50181A1AFE48E10022C9B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5018191AFE48E10022C9B3 /* main.m */; };
 		8D50181D1AFE48E10022C9B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50181C1AFE48E10022C9B3 /* AppDelegate.m */; };
 		8D5018201AFE48E10022C9B3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50181F1AFE48E10022C9B3 /* ViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CAD03A71B1527D200574005 /* BasicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicView.h; sourceTree = "<group>"; };
+		1CAD03A81B1527D200574005 /* BasicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicView.m; sourceTree = "<group>"; };
 		8D5018141AFE48E10022C9B3 /* autolayout_demo_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = autolayout_demo_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5018181AFE48E10022C9B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D5018191AFE48E10022C9B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 				8D5018171AFE48E10022C9B3 /* Supporting Files */,
 				8D50183E1AFE4EB30022C9B3 /* TextViewTVCell.h */,
 				8D50183F1AFE4EB30022C9B3 /* TextViewTVCell.m */,
+				1CAD03A71B1527D200574005 /* BasicView.h */,
+				1CAD03A81B1527D200574005 /* BasicView.m */,
 			);
 			path = autolayout_demo_2;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CAD03A91B1527D200574005 /* BasicView.m in Sources */,
 				8D5018201AFE48E10022C9B3 /* ViewController.m in Sources */,
 				8D5018401AFE4EB30022C9B3 /* TextViewTVCell.m in Sources */,
 				8D50181D1AFE48E10022C9B3 /* AppDelegate.m in Sources */,
@@ -422,6 +428,7 @@
 				8D5018391AFE48E20022C9B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8D50183A1AFE48E20022C9B3 /* Build configuration list for PBXNativeTarget "autolayout_demo_2Tests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +437,7 @@
 				8D50183C1AFE48E20022C9B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
